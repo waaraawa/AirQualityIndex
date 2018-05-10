@@ -10,10 +10,25 @@ typedef enum
     EOHI_EXTREME_DANGER,
 } effect_of_heat_index;
 
-float celsiusToFahrenheit(float celsius);
-float fahrenheitToCelsius(float fahrenheit);
-double getDewPoint(bool fahrenheit, double temperature, double humidity);
-int16_t getHeatIndex(bool fahrenheit, float temperature, float humidity);
-effect_of_heat_index getEffectOfHeatIndex(bool fahrenheit, float temperature);
+float celsiusToFahrenheit(
+    float celsius);
+
+float fahrenheitToCelsius(
+    float fahrenheit);
+
+double getDewPoint(
+    bool fahrenheit,
+    double temperature,
+    double humidity);
+
+int16_t getHeatIndex(
+    bool fahrenheitIn,
+    float temperature,
+    float humidity,
+    bool fahrenheitOut);
+
+effect_of_heat_index getEffectOfHeatIndex(
+    bool fahrenheit,
+    float temperature);
 
 #endif // __AirQualityIndex_H__

@@ -1,12 +1,14 @@
 #include <Arduino.h>
 #include "AirQualityIndex.h"
 
-float celsiusToFahrenheit(float celsius)
+float celsiusToFahrenheit(
+    float celsius)
 {
     return (celsius * 9.0 / 5.0) + 32;
 }
 
-float fahrenheitToCelsius(float fahrenheit)
+float fahrenheitToCelsius(
+    float fahrenheit)
 {
     return (fahrenheit - 32) * (5.0 / 9.0);
 }
@@ -15,7 +17,10 @@ float fahrenheitToCelsius(float fahrenheit)
 // reference (1): http://wahiduddin.net/calc/density_algorithms.htm
 // reference (2): http://www.colorado.edu/geography/weather_station/Geog_site/about.htm
 //
-double getDewPoint(bool fahrenheit, double temperature, double humidity)
+double getDewPoint(
+    bool fahrenheit,
+    double temperature,
+    double humidity)
 {
     double celsius;
 
@@ -50,7 +55,11 @@ double getDewPoint(bool fahrenheit, double temperature, double humidity)
 // 90 ~ 105: Extreme Caution
 // 105 ~ 130: Danger
 // 130 ~ : Extreme Danger
-int16_t getHeatIndex(bool fahrenheit, float temperature, float humidity)
+int16_t getHeatIndex(
+    bool fahrenheitIn,
+    float temperature,
+    float humidity,
+    bool fahrenheitOut)
 {
     float f;
 	float rh = humidity;
@@ -58,7 +67,7 @@ int16_t getHeatIndex(bool fahrenheit, float temperature, float humidity)
 
     int16_t hi = 0;
 
-    if (fahrenheit) {
+    if (fahrenheitIn) {
         f = temperature;
     } else {
         f = celsiusToFahrenheit(temperature);
@@ -78,10 +87,16 @@ int16_t getHeatIndex(bool fahrenheit, float temperature, float humidity)
 		hi = 0.5 * (f + 61.0 + ((f-68.0)*1.2) + (rh*0.094));
 	}
 
-    return hi + adj;
+    if (fahrenheitOut) {
+        return hi + adj;
+    } else {
+        return fahrenheitToCelsius(hi + adj);
+    }
 }
 
-effect_of_heat_index getEffectOfHeatIndex(bool fahrenheit, float temperature)
+effect_of_heat_index getEffectOfHeatIndex(
+    bool fahrenheit,
+    float temperature)
 {
     effect_of_heat_index ret;
     float f;
