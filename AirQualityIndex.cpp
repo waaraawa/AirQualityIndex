@@ -3,12 +3,12 @@
 
 float celsiusToFahrenheit(float celsius)
 {
-    return (celsius * (9 / 5)) + 32;
+    return (celsius * 9.0 / 5.0) + 32;
 }
 
 float fahrenheitToCelsius(float fahrenheit)
 {
-    return (fahrenheit - 32) * (5 / 9);
+    return (fahrenheit - 32) * (5.0 / 9.0);
 }
 
 // getDewPoint function NOAA
@@ -97,11 +97,11 @@ effect_of_heat_index getEffectOfHeatIndex(bool fahrenheit, float temperature)
     } else if ((80 <= f) && (90 >= f)) {
         ret = EOHI_CAUTION;
     } else if ((91 < f) && (105 >= f)) {
-        ret = EOHI_EXTREME_CAUTION
+        ret = EOHI_EXTREME_CAUTION;
     } else if ((105 < f) && (130 >= f)) {
         ret = EOHI_DANGER;
     } else {
-        ret = EOHI_EXTREME_DANGER
+        ret = EOHI_EXTREME_DANGER;
     }
 
     return ret;
