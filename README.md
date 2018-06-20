@@ -6,8 +6,10 @@ Calculate air quality index and related things.
 1. Convert Celsius to Fahrenheit.
 1. Convert Fahrenheit to Celsius.
 1. Calculate Dew Point.
+1. Calculate Humidity.
 1. Calculate Heat Index.
-1. Get effect of Heat Index.
+1. Get Heat Index Tag(e.g. normal, caution, danger)
+1. Get description of Heat Index Tag.
 
 ### TODO
 - [ ] Support Particulate matter(PM2.5 and PM10).
