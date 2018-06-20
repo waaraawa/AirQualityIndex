@@ -1,0 +1,10 @@
+Weather KEYWORD1
+getCelsius KEYWORD2
+getFahrenheit KEYWORD3
+getDewPoint KEYWORD4
+getDewPoint2 KEYWORD5
+getDewPointFast KEYWORD6
+getHumidity KEYWORD7
+getHeatIndex KEYWORD8
+getHeatIndexTag KEYWORD9
+getHeatIndexDesc KEYWORD10
